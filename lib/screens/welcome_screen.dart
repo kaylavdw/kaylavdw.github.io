@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WelcomeScreen extends StatelessWidget {
   static const String id = 'about_screen';
@@ -6,6 +8,9 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Uri toLaunch =
+        Uri(scheme: 'https', host: 'www.cylog.org', path: 'headers/');
+
     return Scaffold(
         body: ListView(
       children: [
@@ -18,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Welcome to BibleMaze', //widget.mazeImage.bibleverse
+                  'Welcome to', //widget.mazeImage.bibleverse
                   style: TextStyle(
                     fontFamily: 'Bitter',
                     fontSize: 35.0,
@@ -36,54 +41,79 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                RichText(
-                    text: const TextSpan(
-                        text: 'BibleMaze ',
-                        style: TextStyle(
-                          fontFamily: 'Bitter',
-                          fontSize: 22.0,
-                          color: Colors.white,
-                        ),
-                        children: <TextSpan>[
-                      TextSpan(
-                        text:
-                            'is a mobile app designed to help Christians navigate through the wealth of Christian content available.\n\n The app is ',
-                        style: TextStyle(
-                            fontFamily: 'OpenSans',
-                            fontSize: 14.0,
-                            color: Colors.white),
-                      ),
-                      TextSpan(
-                        text: 'launching soon',
-                        style: TextStyle(
-                            fontFamily: 'Bitter',
-                            fontSize: 22.0,
-                            color: Colors.white),
-                      ),
-                      TextSpan(
-                        text:
-                            ' and is currently in development and testing phase, so ',
-                        style: TextStyle(
-                            fontFamily: 'OpenSans',
-                            fontSize: 14.0,
-                            color: Colors.white),
-                      ),
-                      TextSpan(
-                        text: 'watch this space.',
-                        style: TextStyle(
-                            fontFamily: 'Bitter',
-                            fontSize: 22.0,
-                            color: Colors.white),
-                      ),
-                      TextSpan(
-                        text:
-                            '\n\nContact biblemaze1@gmail.com if you would like to get involved.',
-                        style: TextStyle(
-                            fontFamily: 'OpenSans',
-                            fontSize: 14.0,
-                            color: Colors.white),
-                      ),
-                    ])),
+                Text(
+                  'BibleMaze', //widget.mazeImage.bibleverse
+                  style: TextStyle(
+                    fontFamily: 'Bitter',
+                    fontSize: 35.0,
+                    color: Colors.white,
+                  ),
+                ),
+                Card(
+                  elevation: 10,
+                  shadowColor: Colors.white,
+                  margin: EdgeInsets.all(20),
+                  color: Colors.grey[850],
+                  child: Padding(
+                    padding: const EdgeInsets.all(28.0),
+                    child: RichText(
+                        text: TextSpan(
+                            text: 'BibleMaze ',
+                            style: const TextStyle(
+                              fontFamily: 'Bitter',
+                              fontSize: 22.0,
+                              color: Colors.white,
+                            ),
+                            children: <TextSpan>[
+                          const TextSpan(
+                            text:
+                                'is a soon-to-be mobile app designed to help Christians navigate through the wealth of Christian content available.\n\n The app is ',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 14.0,
+                                color: Colors.white),
+                          ),
+                          const TextSpan(
+                            text: 'launching soon!',
+                            style: TextStyle(
+                              fontFamily: 'Bitter',
+                              fontSize: 22.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const TextSpan(
+                            text: '\n\nContact ',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 14.0,
+                                color: Colors.white),
+                          ),
+                          TextSpan(
+                            style: const TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 14.0,
+                                color: Colors.blue),
+                            text: 'biblemaze1@gmail.com',
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async {
+                                _sendEmail();
+                              },
+                          ),
+                          const TextSpan(
+                            text: ' if you would like to get involved.',
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                fontSize: 14.0,
+                                color: Colors.white),
+                          ),
+                        ])),
+                  ),
+                ),
+                // ElevatedButton(
+                //  onPressed: () {
+                //  Navigator.pushNamed(context, '/privacy');
+                //},
+                // child: Text('Privacy Policy'))
               ],
             ),
           ),
@@ -91,4 +121,15 @@ class WelcomeScreen extends StatelessWidget {
       ],
     ));
   }
+}
+
+void _sendEmail() {
+  String body = 'Hi, I would like to request more info. Please contact me.';
+  String subject = 'Request more info';
+
+  final Uri emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'biblemaze1@gmail.com',
+      query: 'body=$body&subject=$subject');
+  launchUrl(emailLaunchUri);
 }
