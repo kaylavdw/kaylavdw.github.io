@@ -1,4 +1,5 @@
 import 'package:biblemazeweb/screens/privacy_policy_screen.dart';
+import 'package:biblemazeweb/screens/ts_and_cs_screen.dart';
 import 'package:biblemazeweb/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const WelcomeScreen(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/privacy': (context) => const PrivacyPolicyScreen(),
+        '/terms': (context) => const TsAndCsScreen(),
       },
     );
   }

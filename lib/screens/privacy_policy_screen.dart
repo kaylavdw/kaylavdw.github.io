@@ -70,7 +70,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                             children: <TextSpan>[
                           const TextSpan(
                             text:
-                                '\n\nThis privacy policy applies to the BibleMaze app (hereby referred to as "Application") for mobile devices that was created by an independent developer Kayla (hereby referred to as "Service Provider") as a Free service. This service is intended for use \"AS IS\".',
+                                '\n\nThis privacy policy applies to the BibleMaze app (hereby referred to as "Application") for mobile devices that was created by Kayla van der Watt (hereby referred to as "Service Provider") as a Free service. This service is intended for use \"AS IS\".',
                             style: TextStyle(
                                 fontFamily: 'OpenSans',
                                 fontSize: 14.0,
@@ -85,7 +85,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                           ),
                           const TextSpan(
                             text:
-                                '\n\nThe Application collects information when you download and use it. This information may include information such as \n - Your device\'s Internet Protocol address (e.g. IP address) \n - The pages of the Application that you visit, the time and date of your visit, the time spent on those pages \n - The time spent on the Application \n - The operating system you use on your mobile device\n\nThe Application does not gather precise information about the location of your mobile device.\nThe Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.\n\nFor a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information, including but not limited to Email. The information that the Service Provider request will be retained by them and used as described in this privacy policy.',
+                                '\n\nThe Application collects information when you download and use it. This information may include information such as \n - Your device\'s Internet Protocol address (e.g. IP address) \n - The pages of the Application that you visit, the time and date of your visit, the time spent on those pages, your likes and comments \n - The time spent on the Application \n - Email address (used to log in) \n - The operating system you use on your mobile device\n\nThe Application does not gather precise information about the location of your mobile device.\nThe Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.\n\nFor a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information, including but not limited to Email. The information that the Service Provider request will be retained by them and used as described in this privacy policy.',
                             style: TextStyle(
                                 fontFamily: 'OpenSans',
                                 fontSize: 14.0,
@@ -106,12 +106,20 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                                 fontSize: 14.0,
                                 color: Colors.white),
                           ),
-                          const TextSpan(
-                            style: TextStyle(
+                          TextSpan(
+                            style: const TextStyle(
                                 fontFamily: 'OpenSans',
                                 fontSize: 14.0,
-                                color: Colors.white),
+                                color: Colors.blue),
                             text: '\n- Google Play Services',
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async {
+                                final Uri toLaunch = Uri(
+                                    scheme: 'https',
+                                    host: 'google.com',
+                                    path: 'policies/privacy/');
+                                _launched = _launchInBrowser(toLaunch);
+                              },
                           ),
                           TextSpan(
                             style: const TextStyle(
