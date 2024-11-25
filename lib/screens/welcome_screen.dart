@@ -109,10 +109,10 @@ class WelcomeScreen extends StatelessWidget {
                         ])),
                   ),
                 ),
-                // ElevatedButton(
+                //   ElevatedButton(
                 //  onPressed: () {
-                //  Navigator.pushNamed(context, '/privacy');
-                //},
+                //   Navigator.pushNamed(context, '/privacy');
+                // },
                 // child: Text('Privacy Policy'))
               ],
             ),

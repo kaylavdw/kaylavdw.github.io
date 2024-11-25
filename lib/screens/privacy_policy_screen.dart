@@ -278,8 +278,11 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
 }
 
 Future<void> _launchInBrowser(Uri url) async {
+  // print(url.toString().replaceAll('%23', '#'));
+  // print(Regex.Replace())
+
   if (!await launchUrl(
-    url,
+    Uri.parse(url.toString().replaceAll('%23', '#')),
     mode: LaunchMode.externalApplication,
   )) {
     throw Exception('Could not launch $url');
