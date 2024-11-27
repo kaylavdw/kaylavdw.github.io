@@ -1,3 +1,4 @@
+import 'package:biblemazeweb/screens/delete_data_screen.dart';
 import 'package:biblemazeweb/screens/privacy_policy_screen.dart';
 import 'package:biblemazeweb/screens/ts_and_cs_screen.dart';
 import 'package:biblemazeweb/screens/welcome_screen.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/privacy': (context) => const PrivacyPolicyScreen(),
         '/terms': (context) => const TsAndCsScreen(),
+        '/delete': (context) => const DeleteDataScreen(),
       },
     );
   }

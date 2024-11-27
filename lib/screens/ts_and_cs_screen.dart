@@ -2,18 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class TsAndCsScreen extends StatefulWidget {
+class TsAndCsScreen extends StatelessWidget {
   const TsAndCsScreen({super.key});
 
   @override
-  State<TsAndCsScreen> createState() => _TsAndCsScreenState();
-}
-
-class _TsAndCsScreenState extends State<TsAndCsScreen> {
-  @override
   Widget build(BuildContext context) {
-    Future<void>? _launched;
-
     return Scaffold(
         body: ListView(
       children: [
@@ -70,7 +63,7 @@ class _TsAndCsScreenState extends State<TsAndCsScreen> {
                             children: <TextSpan>[
                           const TextSpan(
                             text:
-                                '\n\nThese terms and conditions applies to the BibleMaze app (hereby referred to as "Application") for mobile devices that was created by Kayla van der Watt (hereby referred to as "Service Provider") as a Free service.\n\nUpon downloading or utilizing the Application, you are automatically agreeing to the following terms. It is strongly advised that you thoroughly read and understand these terms prior to using the Application. The content used in the mobile application is used for educational and informational purposes only. All rights to the quotes, Bible verses, song lyrics and other materials belong to their respective owners. No copyright infringement is intended. I do not own nor claim to own the rights to any of the quotes, Bible verses, or song lyrics used. Unauthorized copying, modification of the Application, any part of the Application, or our trademarks is strictly prohibited. Any attempts to extract the source code of the Application, translate the Application into other languages, or create derivative versions are not permitted. All trademarks, images, copyrights, database rights, and other intellectual property rights related to the Application remain the property of the Service Provider. The Service Provider is dedicated to ensuring that the Application is as beneficial and efficient as possible. As such, they reserve the right to modify the Application or charge for their services at any time and for any reason. The Service Provider assures you that any charges for the Application or its services will be clearly communicated to you.\n\nThe Application stores and processes personal data that you have provided to the Service Provider in order to provide the Service. It is your responsibility to maintain the security of your phone and access to the Application. The Service Provider strongly advise against jailbreaking or rooting your phone, which involves removing software restrictions and limitations imposed by the official operating system of your device. Such actions could expose your phone to malware, viruses, malicious programs, compromise your phone\'s security features, and may result in the Application not functioning correctly or at all.\n\nPlease note that the Application utilizes third-party services that have their own Terms and Conditions. Below are the links to the Terms and Conditions of the third-party service providers used by the Application:',
+                                '\n\nThese terms and conditions applies to the BibleMaze app (hereby referred to as "Application") for mobile devices that was created by Kayla (hereby referred to as "Service Provider") as a Free service.\n\nUpon downloading or utilizing the Application, you are automatically agreeing to the following terms. It is strongly advised that you thoroughly read and understand these terms prior to using the Application. The content used in the mobile application is used for educational and informational purposes only. All rights to the quotes, Bible verses, song lyrics and other materials belong to their respective owners. No copyright infringement is intended. I do not own nor claim to own the rights to any of the quotes, Bible verses, or song lyrics used. Unauthorized copying, modification of the Application, any part of the Application, or our trademarks is strictly prohibited. Any attempts to extract the source code of the Application, translate the Application into other languages, or create derivative versions are not permitted. All trademarks, images, copyrights, database rights, and other intellectual property rights related to the Application remain the property of the Service Provider. The Service Provider is dedicated to ensuring that the Application is as beneficial and efficient as possible. As such, they reserve the right to modify the Application or charge for their services at any time and for any reason. The Service Provider assures you that any charges for the Application or its services will be clearly communicated to you.\n\nThe Application stores and processes personal data that you have provided to the Service Provider in order to provide the Service. It is your responsibility to maintain the security of your phone and access to the Application. The Service Provider strongly advise against jailbreaking or rooting your phone, which involves removing software restrictions and limitations imposed by the official operating system of your device. Such actions could expose your phone to malware, viruses, malicious programs, compromise your phone\'s security features, and may result in the Application not functioning correctly or at all.\n\nPlease note that the Application utilizes third-party services that have their own Terms and Conditions. Below are the links to the Terms and Conditions of the third-party service providers used by the Application:',
                             style: TextStyle(
                                 fontFamily: 'OpenSans',
                                 fontSize: 14.0,
@@ -88,7 +81,7 @@ class _TsAndCsScreenState extends State<TsAndCsScreen> {
                                     scheme: 'https',
                                     host: 'google.com',
                                     path: 'policies/terms/');
-                                _launched = _launchInBrowser(toLaunch);
+                                await _launchInBrowser(toLaunch);
                               },
                           ),
                           TextSpan(
@@ -103,7 +96,7 @@ class _TsAndCsScreenState extends State<TsAndCsScreen> {
                                     scheme: 'https',
                                     host: 'google.com',
                                     path: 'analytics/terms/');
-                                _launched = _launchInBrowser(toLaunch);
+                                await _launchInBrowser(toLaunch);
                               },
                           ),
                           TextSpan(
@@ -118,7 +111,7 @@ class _TsAndCsScreenState extends State<TsAndCsScreen> {
                                     scheme: 'https',
                                     host: 'firebase.google.com',
                                     path: 'terms/crashlytics/');
-                                _launched = _launchInBrowser(toLaunch);
+                                await _launchInBrowser(toLaunch);
                               },
                           ),
                           const TextSpan(
